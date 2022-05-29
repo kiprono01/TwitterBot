@@ -2,8 +2,6 @@ import os as _os
 import dotenv as _dotenv
 import time as _time
 import tweepy as _tweepy
-from tweepy.auth import OAuthHandler
-
 
 import services as _services
 import unsplash as _unsplash
@@ -35,4 +33,12 @@ def _post_image():
     twitter_api = _get_twitter_api()
     twitter_api.update_status_with_media(status, filename)
 
-_post_image()
+def run():
+    while True:
+        _write_tweet()
+        _time.sleep(1800)
+        _post_image()
+        _time.sleep(1800)
+
+if __name__ == "__main__":
+    run()
