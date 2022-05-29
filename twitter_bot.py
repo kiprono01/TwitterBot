@@ -28,6 +28,11 @@ def _write_tweet():
     twitter_api = _get_twitter_api()
     twitter_api.update_status(tweet)
 
+def _post_image():
+    _unsplash.download_image()
+    filename = "picture.jpg"
+    status = _write_tweet()
+    twitter_api = _get_twitter_api()
+    twitter_api.update_status_with_media(status, filename)
 
-_write_tweet()
-
+_post_image()
